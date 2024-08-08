@@ -10,6 +10,7 @@
   --hx-div-bg: rgba(24, 26, 27, 0.7);
   --hx-styler-blue: rgb(0 110 254);
   --hx-styler-blue-hover: rgb(46, 137, 255);
+  --hx-styler-red: rgb(226 22 42);
 }
 @font-face {
   font-family: "Geist";
@@ -200,6 +201,18 @@ form button:hover {
   font-size: 24px;
   font-weight: 600;
 }
+@keyframes circleAnimation {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: var(--hx-styler-red);
+  }
+}
+#pomodoroApp .circle.state-finished {
+  animation: circleAnimation 300ms infinite alternate;
+  border-color: var(--hx-styler-red);
+}
 #pomodoroApp p {
   margin: 0;
 }
@@ -219,9 +232,10 @@ form button:hover {
 }
 #pomodoroApp #startBtn {
   width: 90px;
+  margin-right: 6px;
 }
 #pomodoroApp button.state-pause{
-  background-color: rgb(226 22 42);
+  background-color: var(--hx-styler-red);
 }
 @media (max-width: 770px) {
   nav .wrapper {
@@ -233,5 +247,13 @@ form button:hover {
   #pomodoroApp .app-container {
     flex-direction: column;
     align-items: center;
+  }
+}
+@media (max-width: 650px) {
+  nav button .button_content {
+    display: none;
+  }
+  nav button .button_suffix {
+    zoom: 1.5;
   }
 }
