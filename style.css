@@ -43,7 +43,7 @@ nav {
   justify-content: center;
 }
 nav .wrapper {
-  width: 60vw;
+  width: 70vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -187,7 +187,7 @@ form button:hover {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 1px solid var(--hx-text-100);
+  border: 2px solid var(--hx-styler-blue);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -217,4 +217,16 @@ form button:hover {
 }
 #pomodoroApp button.state-pause{
   background-color: rgb(226 22 42);
+}
+@media (max-width: 770px) {
+  nav .wrapper {
+    width: 90vw;
+  }
+  .container {
+    padding: 30px 40px;
+  }
+  #pomodoroApp .app-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
