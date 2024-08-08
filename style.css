@@ -1,11 +1,15 @@
 :root {
   --hx-background-100: rgb(10, 10, 10);
   --hx-background-200: rgb(20, 20, 20);
+  --hx-background-300: rgb(30, 30, 30);
+  --hx-background-350: rgb(35, 35, 35);
   --hx-background-400: rgb(40, 40, 40);
   --hx-background-500: rgb(50, 50, 50);
   --hx-text-100: rgb(255, 255, 255);
   --hx-text-200: rgb(205, 205, 205);
-  --hx-div: rgba(24, 26, 27, 0.7);
+  --hx-div-bg: rgba(24, 26, 27, 0.7);
+  --hx-styler-blue: rgb(0 110 254);
+  --hx-styler-blue-hover: rgb(46, 137, 255);
 }
 @font-face {
   font-family: "Geist";
@@ -31,6 +35,31 @@ body {
   margin: 0;
   background-color: var(--hx-background-100);
 }
+nav {
+  position: fixed;
+  width: 100%;
+  background-color: var(--hx-div-bg);
+  display: flex;
+  justify-content: center;
+}
+nav .wrapper {
+  width: 60vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0px;
+}
+nav .wrapper h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--hx-text-100);
+  margin: 0;
+}
+nav .links {
+  display: flex;
+  gap: 10px;
+}
 main {
   display: flex;
   flex-direction: column;
@@ -41,13 +70,71 @@ main {
   overflow: hidden;
 }
 .container {
+  display: none;
   padding: 30px 80px;
   background-color: var(--hx-background-200);
   border-radius: 30px;
 }
+.container.visible {
+  display: block;
+}
 h1 {
   color: var(--hx-text-100);
   margin: 20px 0px;
+}
+button {
+  background-color: var(--hx-background-300);
+  color: var(--hx-text-200);
+  border-radius: 10px;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+}
+button:hover {
+  background-color: var(--hx-background-400);
+}
+button:active {
+  background-color: var(--hx-background-500);
+}
+button span.button_content {
+  padding-right: 10px;
+}
+button span.button_suffix {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: text-top;
+  align-content: center;
+}
+.button_suffix svg {
+  height: 18px;
+}
+button.primary {
+  background-color: var(--hx-styler-blue);
+  color: var(--hx-text-100);
+}
+button.primary:hover {
+  background-color: var(--hx-styler-blue-hover);
+}
+button.primary:active {
+  filter: brightness(1.2);
+}
+button.secondary {
+  background-color: transparent;
+}
+button.secondary:hover {
+  background-color: var(--hx-background-350);
+}
+button.small {
+  padding: 10px 12px;
+  font-size: 14px;
+}
+button.small span.button_content {
+  padding-right: 8px;
+}
+button.small .button_suffix svg {
+  height: 16px;
+  width: 14px;
 }
 label {
   color: var(--hx-text-200);
@@ -91,4 +178,43 @@ form button:hover {
 }
 #result.show {
   animation: fadeIn 0.5s forwards;
+}
+#pomodoroApp .app-container {
+  display: flex;
+  gap: 40px;
+}
+#pomodoroApp .circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid var(--hx-text-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--hx-text-100);
+  font-size: 24px;
+  font-weight: 600;
+}
+#pomodoroApp p {
+  margin: 0;
+}
+#pomodoroApp .circle span {
+  font-family: Geist Mono, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 50px;
+}
+#pomodoroApp .circle #dot {
+  font-size: 22px;
+  padding: 0 6px;
+}
+#pomodoroApp .info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+#pomodoroApp #startBtn {
+  width: 90px;
+}
+#pomodoroApp button.state-pause{
+  background-color: rgb(226 22 42);
 }
