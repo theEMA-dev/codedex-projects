@@ -1,18 +1,3 @@
-:root {
-  --hx-background-100: rgb(10, 10, 10);
-  --hx-background-200: rgb(20, 20, 20);
-  --hx-background-300: rgb(30, 30, 30);
-  --hx-background-350: rgb(35, 35, 35);
-  --hx-background-400: rgb(40, 40, 40);
-  --hx-background-500: rgb(50, 50, 50);
-  --hx-text-100: rgb(255, 255, 255);
-  --hx-text-200: rgb(205, 205, 205);
-  --hx-div-bg: rgba(24, 26, 27, 0.7);
-  --hx-styler-blue: rgb(0 110 254);
-  --hx-styler-blue-hover: rgb(46, 137, 255);
-  --hx-styler-red: rgb(226 22 42);
-  --hx-styler-green: rgb(0 200 83);
-}
 @media (prefers-color-scheme: dark) {
   :root {
     --hx-background-100: hsl(0, 0%, 0%);
@@ -25,6 +10,33 @@
     --hx-border-300: hsl(0, 0%, 50%);
     --hx-text-100: hsl(0, 0%, 93%);
     --hx-text-200: hsl(0, 0%, 63%);
+    --hx-styler-blue: rgb(0 110 254);
+    --hx-styler-blue-hover: rgb(46, 137, 255);
+    --hx-styler-red: rgb(226 22 42);
+    --hx-styler-red-hover: rgb(235, 53, 68);
+    --hx-styler-green: rgb(0 200 83);
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --hx-background-100: hsl(0, 0%, 98%);
+    --hx-background-200: hsl(0, 0%, 100%);
+    --hx-background-300: hsl(0, 0%, 92%);
+    --hx-background-400: hsl(0, 0%, 86%);
+    --hx-background-500: hsl(0, 0%, 80%);
+    --hx-border-100: hsl(0, 0%, 92%);
+    --hx-border-200: hsl(0, 0%, 20%);
+    --hx-border-300: hsl(0, 0%, 50%);
+    --hx-text-100: hsl(0, 0%, 9%);
+    --hx-text-200: hsl(0, 0%, 40%);
+    --hx-styler-blue: rgb(55, 142, 255);
+    --hx-styler-blue-hover: rgb(19, 103, 214);
+    --hx-styler-red: rgb(222, 49, 66);
+    --hx-styler-red-hover: rgb(198, 25, 42);
+    --hx-styler-green: rgb(0 200 83);
+  }
+  button.primary {
+    color: var(--hx-background-100) !important;
   }
 }
 @font-face {
@@ -53,23 +65,28 @@ body {
 }
 nav {
   width: 100%;
-  background-color: var(--hx-background-200);
-  border-bottom: 1px solid var(--hx-border-100);
   display: flex;
   justify-content: center;
 }
 nav .wrapper {
-  width: 70vw;
+  width: 1174.5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--hx-background-200);
   padding: 15px 0px;
+  border-left: 1px solid var(--hx-border-100);
+  border-right: 1px solid var(--hx-border-100);
 }
 nav .wrapper h1 {
   font-weight: 600;
+  font-size: 1.25rem;
   color: var(--hx-text-100);
-  margin: 0;
+  margin: 0px 22px;
+}
+nav .wrapper button {
+  margin-right: 22px;
 }
 h1 {
   font-size: 1.5rem;
@@ -165,11 +182,15 @@ form input {
     opacity: 1;
   }
 }
+main {
+  display: flex;
+  justify-content: center;
+}
 main .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: calc(100svh - 67px);
-  height: calc(100vh - 67px);
+  width: auto;
+  outline: 1px solid var(--hx-border-100);
 }
 .container {
   display: flex;
@@ -179,10 +200,16 @@ main .wrapper {
   height: calc((100svh - 68px)/2);
   height: calc((100vh - 68px)/2);
 }
+.container:nth-of-type(2), .container:nth-of-type(4) {
+  border-right: none;
+}
 .container_inner {
   display: flex;
   flex-direction:row;
   align-items: center;
+}
+.app {
+  padding: 0px 80px;
 }
 #result {
   opacity: 0; /* Start hidden */
@@ -246,18 +273,21 @@ main .wrapper {
 #pomodoroApp button.state-pause{
   background-color: var(--hx-styler-red);
 }
-@media (max-width: 1079px) {
+#pomodoroApp button.state-pause:hover{
+  background-color: var(--hx-styler-red-hover);
+}
+@media (max-width: 1235px) {
   main .wrapper {
     grid-template-columns: 1fr;
   }
+  .container.empty {
+    display: none;
+  }
   .container {
-    border-right: none;
     border-bottom: 1px solid var(--hx-border-100);
   }
-}
-@media (max-width: 770px) {
-  nav .wrapper {
-    width: 90vw;
+  .app {
+    padding: 0px 50px;
   }
 }
 @media (max-width: 600px) {
@@ -267,28 +297,22 @@ main .wrapper {
   nav button .button_suffix {
     zoom: 1.5;
   }
-  nav h1 {
-    font-size: 1.25rem;
-  }
-  nav h1 span {
-    font-size: .75rem;
-    display: inline-block;
-    vertical-align: middle;
-  }
   h2 {
-    font-size: 1.1rem;
     text-align: center;
+    margin-bottom: 40px;
+  }
+  main .wrapper {
+    outline: none;
   }
   .container {
     height: 100svh;
     height: 100vh;
+    border-right: none;
+    border-bottom: 1px solid var(--hx-border-200);
   }
   .container:first-of-type {
     height: calc(100svh - 67px);
     height: calc(100vh - 67px);
-  }
-  .container.empty {
-    display: none;
   }
   #pomodoroApp .app-container {
     flex-direction: column;
@@ -298,5 +322,14 @@ main .wrapper {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+  }
+}
+@media (max-height: 700px) {
+  .container {
+    height: calc(100svh - 67px);
+    height: calc(100vh - 67px);
+  }
+  .container.empty {
+    display: none;
   }
 }
