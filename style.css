@@ -249,6 +249,9 @@ main .wrapper {
   margin: 0;
   margin-left: 12px;
 }
+#leapYearChecker form {
+  padding-top: 20px;
+}
 #result {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
