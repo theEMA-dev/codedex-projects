@@ -255,7 +255,7 @@ main .wrapper {
 #result.show {
   animation: fadeIn 0.5s forwards;
 }
-#pomodoroApp .app-container {
+#pomodoroApp .app {
   display: flex;
   gap: 40px;
 }
@@ -350,7 +350,7 @@ main .wrapper {
     height: calc(100svh - 68px);
     height: calc(100vh - 68px);
   }
-  #pomodoroApp .app-container {
+  #pomodoroApp .app {
     flex-direction: column;
     align-items: center;
   }
