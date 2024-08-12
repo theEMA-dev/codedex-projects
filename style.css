@@ -1,6 +1,7 @@
 :root {
   --hx-font-sans: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
-  --hx-font-mono: 'Geist Mono', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;;
+  --hx-font-mono: 'Geist Mono', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  --hx-site-width: 1200px
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -58,7 +59,7 @@
   font-display: swap;
 }
 :host, body, html {
-  font-family: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--hx-font-sans);
 }
 body {
   text-rendering: optimizeLegibility;
@@ -73,7 +74,7 @@ nav {
   justify-content: center;
 }
 nav .wrapper {
-  width: 1174.5px;
+  width: var(--hx-site-width);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -89,16 +90,14 @@ nav .wrapper h1 {
   color: var(--hx-text-100);
   margin: 0px 22px;
 }
+nav .wrapper h1 span {
+  font-weight: 400;
+}
 nav .wrapper a {
   margin-right: 22px;
 }
 h1 {
   font-size: 1.5rem;
-  color: var(--hx-text-100);
-  margin: 20px 0px;
-}
-h2 {
-  font-size: 1.25rem;
   color: var(--hx-text-100);
   margin: 20px 0px;
 }
@@ -196,6 +195,7 @@ main .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: auto;
+  min-width: var(--hx-site-width);
   outline: 1px solid var(--hx-border-100);
 }
 .container {
@@ -206,6 +206,8 @@ main .wrapper {
   border-bottom: 1px solid var(--hx-border-100);
   height: calc((100svh - 68px)/2);
   height: calc((100vh - 68px)/2);
+  max-width: calc(var(--hx-site-width)/2);
+  box-sizing: border-box;
 }
 .container:nth-of-type(2), .container:nth-of-type(4) {
   border-right: none;
@@ -217,7 +219,7 @@ main .wrapper {
   padding-top: 36px;
 }
 .app {
-  padding: 0px 80px;
+  padding: 0;
 }
 .app-repo {
   position: absolute;
@@ -244,6 +246,7 @@ main .wrapper {
   font-size: 1rem;
   font-weight: 300;
   color: var(--hx-text-200);
+  margin: 0;
   margin-left: 12px;
 }
 #result {
@@ -310,15 +313,17 @@ main .wrapper {
 #pomodoroApp button.state-pause:hover{
   background-color: var(--hx-styler-red-hover);
 }
-@media (max-width: 1235px) {
+@media (max-width: 1200px) {
   main .wrapper {
     grid-template-columns: 1fr;
+    min-width: 100vw;
   }
   .container.empty {
     display: none;
   }
   .container {
     border-bottom: 1px solid var(--hx-border-100);
+    max-width: 100vw;
   }
   .app {
     padding: 0px 50px;
@@ -338,6 +343,7 @@ main .wrapper {
   }
   main .wrapper {
     outline: none;
+    min-width: initial;
   }
   .container {
     width: 100vw;
@@ -350,15 +356,6 @@ main .wrapper {
     height: calc(100svh - 68px);
     height: calc(100vh - 68px);
   }
-  #pomodoroApp .app {
-    flex-direction: column;
-    align-items: center;
-  }
-  #leapYearChecker form {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
   .app-name {
     height: 56px;
   }
@@ -369,6 +366,15 @@ main .wrapper {
   .app-repo .button_suffix svg {
     height: 20px !important;
     width: 20px !important;
+  }
+  #pomodoroApp .app {
+    flex-direction: column;
+    align-items: center;
+  }
+  #leapYearChecker form {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 }
 @media (max-width: 400px) {
