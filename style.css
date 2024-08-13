@@ -1,169 +1,37 @@
-:root {
-  --hx-font-sans: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
-  --hx-font-mono: 'Geist Mono', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-  --hx-site-width: 1200px
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --hx-background-100: hsl(0, 0%, 0%);
-    --hx-background-200: hsl(0, 0%, 4%);
-    --hx-background-300: hsl(0, 0%, 8%);
-    --hx-background-400: hsl(0, 0%, 12%);
-    --hx-background-500: hsl(0, 0%, 16%);
-    --hx-border-100: hsl(0, 0%, 12%);
-    --hx-border-200: hsl(0, 0%, 20%);
-    --hx-border-300: hsl(0, 0%, 50%);
-    --hx-text-100: hsl(0, 0%, 93%);
-    --hx-text-200: hsl(0, 0%, 63%);
-    --hx-styler-blue: rgb(0 110 254);
-    --hx-styler-blue-hover: rgb(46, 137, 255);
-    --hx-styler-red: rgb(226 22 42);
-    --hx-styler-red-hover: rgb(235, 53, 68);
-    --hx-styler-green: rgb(0 200 83);
+@keyframes circleAnimation {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: var(--hx-styler-red);
   }
 }
-@media (prefers-color-scheme: light) {
-  :root {
-    --hx-background-100: hsl(0, 0%, 98%);
-    --hx-background-200: hsl(0, 0%, 100%);
-    --hx-background-300: hsl(0, 0%, 92%);
-    --hx-background-400: hsl(0, 0%, 86%);
-    --hx-background-500: hsl(0, 0%, 80%);
-    --hx-border-100: hsl(0, 0%, 92%);
-    --hx-border-200: hsl(0, 0%, 20%);
-    --hx-border-300: hsl(0, 0%, 50%);
-    --hx-text-100: hsl(0, 0%, 9%);
-    --hx-text-200: hsl(0, 0%, 40%);
-    --hx-styler-blue: rgb(55, 142, 255);
-    --hx-styler-blue-hover: rgb(19, 103, 214);
-    --hx-styler-red: rgb(222, 49, 66);
-    --hx-styler-red-hover: rgb(198, 25, 42);
-    --hx-styler-green: rgb(0 200 83);
+@-moz-keyframes circleAnimation {
+  from {
+    border-color: transparent;
   }
-  button.primary {
-    color: var(--hx-background-100) !important;
+  to {
+    border-color: var(--hx-styler-red);
   }
 }
-@font-face {
-  font-family: "Geist";
-  src: url("https://emirkaynar.com/static/font/Geist.woff2") format("woff2");
-  font-weight: 100 1000;
-  font-style: normal;
-  font-display: swap;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-@font-face {
-  font-family: "Geist Mono";
-  src: url("https://emirkaynar.com/static/font/GeistMono.woff2") format("woff2");
-  font-weight: 100 1000;
-  font-style: normal;
-  font-display: swap;
-}
-:host, body, html {
-  font-family: var(--hx-font-sans);
-}
-body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 400;
-  margin: 0;
-  background-color: var(--hx-background-100);
-}
-nav {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-nav .wrapper {
-  width: var(--hx-site-width);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--hx-background-200);
-  padding: 15px 0px;
-  border-left: 1px solid var(--hx-border-100);
-  border-right: 1px solid var(--hx-border-100);
-}
-nav .wrapper h1 {
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--hx-text-100);
-  margin: 0px 22px;
-}
-nav .wrapper h1 span {
-  font-weight: 400;
-}
-nav .wrapper a {
-  margin-right: 22px;
-}
-h1 {
-  font-size: 1.5rem;
-  color: var(--hx-text-100);
-  margin: 20px 0px;
-}
-a:focus-visible, button:focus-visible, input:focus-visible {
-  outline: 2px solid var(--hx-styler-green);
-}
-button {
-  background-color: var(--hx-background-300);
-  color: var(--hx-text-200);
-  border-radius: 10px;
-  border: none;
-  padding: 10px 16px;
-  cursor: pointer;
-  transition: ease-in-out 200ms;
-}
-button:hover {
-  background-color: var(--hx-background-500);
-}
-button:active {
-  filter: brightness(1.2);
-}
-button span.button_content {
-  padding-right: 10px;
-}
-button span.button_suffix {
-  display: inline-flex;
-  flex-direction: column;
-  vertical-align: text-top;
-  align-content: center;
-}
-.button_suffix svg {
-  height: 18px;
-}
-button.primary {
-  background-color: var(--hx-styler-blue);
-  color: var(--hx-text-100);
-}
-button.primary:hover {
-  background-color: var(--hx-styler-blue-hover);
-}
-button.secondary {
-  background-color: transparent;
-  outline: 1px solid var(--hx-border-100);
-}
-button.secondary:hover {
-  background-color: var(--hx-background-300);
-  outline-color: var(--hx-border-200);
-}
-button.small {
-  padding: 10px 12px;
-  font-size: .875rem;
-}
-button.small span.button_content {
-  padding-right: 8px;
-}
-button.small .button_suffix svg {
-  height: 16px;
-  width: 14px;
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 label {
   color: var(--hx-text-200);
-}
-p {
-  font-size: 1rem;
-  margin: 20px 0px;
-  color: var(--hx-text-100);
 }
 form {
   display: flex;
@@ -179,76 +47,6 @@ form input {
   width: 8rem;
   color: var(--hx-text-100);
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-main {
-  display: flex;
-  justify-content: center;
-}
-main .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: auto;
-  min-width: var(--hx-site-width);
-  outline: 1px solid var(--hx-border-100);
-}
-.container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  border-right: 1px solid var(--hx-border-100);
-  border-bottom: 1px solid var(--hx-border-100);
-  height: calc((100svh - 68px)/2);
-  height: calc((100vh - 68px)/2);
-  max-width: calc(var(--hx-site-width)/2);
-  box-sizing: border-box;
-}
-.container:nth-of-type(2), .container:nth-of-type(4) {
-  border-right: none;
-}
-.container_inner {
-  display: flex;
-  flex-direction:row;
-  align-items: center;
-  padding-top: 36px;
-}
-.app {
-  padding: 0;
-}
-.app-repo {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.app-repo button {
-  border-radius: 0px;
-}
-.app-repo a {
-  display: flex;
-}
-.app-name {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  top: 0;
-  left: 0;
-  height: 36px;
-  width: 100%;
-  outline: 1px solid var(--hx-border-100);
-}
-.app-name h2 {
-  font-size: 1rem;
-  font-weight: 300;
-  color: var(--hx-text-200);
-  margin: 0;
-  margin-left: 12px;
-}
 #leapYearChecker form {
   padding-top: 20px;
 }
@@ -259,6 +57,7 @@ main .wrapper {
   color: var(--hx-text-100);
 }
 #result.show {
+  -moz-animation: fadeIn 0.5s forwards;
   animation: fadeIn 0.5s forwards;
 }
 #pomodoroApp .app {
@@ -277,15 +76,8 @@ main .wrapper {
   font-size: 24px;
   font-weight: 600;
 }
-@keyframes circleAnimation {
-  from {
-    border-color: transparent;
-  }
-  to {
-    border-color: var(--hx-styler-red);
-  }
-}
 #pomodoroApp .circle.state-finished {
+  -moz-animation: circleAnimation 300ms infinite alternate;
   animation: circleAnimation 300ms infinite alternate;
   border-color: var(--hx-styler-red);
 }
@@ -316,60 +108,7 @@ main .wrapper {
 #pomodoroApp button.state-pause:hover{
   background-color: var(--hx-styler-red-hover);
 }
-@media (max-width: 1200px) {
-  main .wrapper {
-    grid-template-columns: 1fr;
-    min-width: 100vw;
-  }
-  .container.empty {
-    display: none;
-  }
-  .container {
-    border-bottom: 1px solid var(--hx-border-100);
-    max-width: 100vw;
-  }
-  .app {
-    padding: 0px 50px;
-  }
-}
 @media (max-width: 600px) {
-  nav .wrapper {
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid var(--hx-border-100);
-  }
-  nav button .button_content {
-    display: none;
-  }
-  nav button .button_suffix {
-    zoom: 1.5;
-  }
-  main .wrapper {
-    outline: none;
-    min-width: initial;
-  }
-  .container {
-    width: 100vw;
-    height: 100svh;
-    height: 100vh;
-    border-right: none;
-    border-bottom: 1px solid var(--hx-border-200);
-  }
-  .container:first-of-type {
-    height: calc(100svh - 68px);
-    height: calc(100vh - 68px);
-  }
-  .app-name {
-    height: 56px;
-  }
-  .app-repo button {
-    width: 56px;
-    height: 56px;
-  }
-  .app-repo .button_suffix svg {
-    height: 20px !important;
-    width: 20px !important;
-  }
   #pomodoroApp .app {
     flex-direction: column;
     align-items: center;
@@ -378,19 +117,5 @@ main .wrapper {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-  }
-}
-@media (max-width: 400px) {
-  nav .wrapper h1 {
-    font-size: 1rem;
-  }
-}
-@media (max-height: 700px) {
-  .container {
-    height: calc(100svh - 68px);
-    height: calc(100vh - 68px);
-  }
-  .container.empty {
-    display: none;
   }
 }
