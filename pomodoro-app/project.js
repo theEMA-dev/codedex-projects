@@ -1,4 +1,4 @@
-const sound = new Audio("/pomodoro-app/finish-effect.wav");
+const sound = new Audio("pomodoro-app/finish-effect.wav");
 const startBtn = document.getElementById("startBtn");
 const startBtnText = document.querySelector("#startBtn .button_content");
 const startBtnIcon = document.querySelector("#startBtn .button_suffix");
